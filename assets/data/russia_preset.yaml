@@ -1,0 +1,69 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: warning
+ipv6: false
+
+dns:
+  enable: true
+  ipv6: false
+  default-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+  nameserver:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  fallback:
+    - 8.8.4.4
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+
+proxies: []
+
+proxy-groups:
+  - name: "\U0001F680 Автовыбор"
+    type: url-test
+    proxies: []
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+    tolerance: 50
+
+  - name: "\U0001F530 Основной"
+    type: select
+    proxies:
+      - "\U0001F680 Автовыбор"
+
+rules:
+  - DOMAIN-SUFFIX,instagram.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,facebook.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,twitter.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,x.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,youtube.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,youtu.be,\U0001F530 Основной
+  - DOMAIN-SUFFIX,tiktok.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,discord.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,discordapp.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,discord.gg,\U0001F530 Основной
+  - DOMAIN-SUFFIX,spotify.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,soundcloud.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,pinterest.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,reddit.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,medium.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,github.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,githubusercontent.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,telegram.org,\U0001F530 Основной
+  - DOMAIN-SUFFIX,whatsapp.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,signal.org,\U0001F530 Основной
+  - DOMAIN-SUFFIX,linkedin.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,notion.so,\U0001F530 Основной
+  - DOMAIN-SUFFIX,figma.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,canva.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,openai.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,anthropic.com,\U0001F530 Основной
+  - DOMAIN-SUFFIX,claude.ai,\U0001F530 Основной
+  - DOMAIN-SUFFIX,chatgpt.com,\U0001F530 Основной
+  - GEOIP,RU,DIRECT
+  - MATCH,\U0001F530 Основной
