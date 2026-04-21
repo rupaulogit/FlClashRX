@@ -1,6 +1,6 @@
 ## v0.8.86
 
-- Fix windows tun issues
+- Fix windows tun issues 
 
 - Optimize android get system dns
 
